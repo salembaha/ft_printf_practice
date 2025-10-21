@@ -1,47 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_print_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabahass <sabahass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 14:57:31 by sabahass          #+#    #+#             */
-/*   Updated: 2025/10/21 19:10:37 by sabahass         ###   ########.fr       */
+/*   Created: 2025/10/19 12:05:00 by sabahass          #+#    #+#             */
+/*   Updated: 2025/10/21 18:59:13 by sabahass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// static int	ft_print_x_long(unsigned long n)
-// {
-// 	int		i;
-// 	char	*hex_digits;
-
-// 	i = 0;
-// 	hex_digits = "0123456789abcdef";
-// 	if (n >= 16)
-// 	{
-// 		i += ft_print_x_long(n / 16);
-// 		if (i == -1)
-// 			return (-1);
-// 	}
-// 	if (ft_print_c(hex_digits[n % 16]) == -1)
-// 		return (-1);
-// 	return (i + 1);
-// }
-
-int	ft_print_p(const void *p)
+int	ft_print_d(int n)
 {
-	int				i;
-	int				hex_count;
+	char	*str;
+	int		i;
+	// ssize_t	w;
 
-	if (!p)
-		return (ft_print_s("(nil)"));
-	i = ft_print_s("0x");
-	if (i == -1)
+	str = ft_itoa(n);
+	if (!str)
 		return (-1);
-	hex_count = ft_print_x((unsigned long)p, 0);
-	if (hex_count == -1)
-		return (-1);
-	return (i + hex_count);
+	i = ft_strlen(str);
+	if (write(1, str, i) == -1)
+		return (free(str), -1);
+	return (free(str), i);
+
+	// while (str[i])
+	// {
+	// 	w = write(1, &str[i], 1);
+	// 	if (w != 1)
+	// 		return (free(str), -1);
+	// 	i++;
+	// }
+	// free(str);
+	// return (i);
 }
+
+// putnbr linken/ gebruik logic van putnumber 
