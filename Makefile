@@ -14,7 +14,7 @@ SRCS = $(SRC_DIR)/ft_printf.c \
 		$(SRC_DIR)/ft_print_d.c \
 		$(SRC_DIR)/ft_print_u.c \
 		$(SRC_DIR)/ft_print_x.c \
-		$(SRC_DIR)/ft_print_p.c \
+		$(SRC_DIR)/ft_print_p.c
 
 OBJS = $(SRCS:.c=.o)
 
